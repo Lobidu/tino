@@ -1,19 +1,21 @@
 require('dotenv').load();
-const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-
 
 // Database
 // Connect to DB
-const { DB_USERNAME, DB_PASSWORD, DB_SERVER, DB_PORT, DB_NAME, DB_AUTHDB } = process.env;
-mongoose.connect(
-  `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_SERVER}:${DB_PORT}/${DB_NAME}?authSource=${DB_AUTHDB}`,
-  { useNewUrlParser: true })
-  .catch(
-    (err) => {
-      console.log(`connection to the database failed with error: ${err}`);
-    },
-  );
+var elasticsearch = require('elasticsearch');
+var esclient = new elasticsearch.Client({
+  host: 'localhost:9200',
+  log: 'trace'
+});
+
+esclient.create({
+  index: 'mousepos',
+  type: 'mspos',
+  id: JSON.stringify(new Date()),
+  body: {
+    title: 'Test abc',
+  }
+});
 
 const WebSocket = require('ws');
 
@@ -25,5 +27,18 @@ wss.on('connection', function connection(ws) {
   });
   console.log('connection')
   ws.send('something');
+esclient.search({
+  index: 'mousepos',
+  body: {
+    query: {
+      match: { title: 'Test abc' }
+    } 
+  }
+}
+).then(function (response) {
+    ws.send('response', response);
+}
+);
+
 });
 console.log('waiting');
