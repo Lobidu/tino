@@ -9,11 +9,12 @@ export default {
     grid: []
   },
   setMousePosition(pos) {
-   const x = pos.clientX / window.innerWidth;
-   const y = pos.clientY / window.innerWidth;
-   const posX = Math.floor(x * this.gridSize);
-   const posY = Math.floor(y * this.gridSize);
-   this.grid[posX][posY]++;
+   const posX = pos.clientX / window.innerWidth;
+   const posY = pos.clientY / window.innerWidth;
+   const x = Math.floor(posX * this.gridSize);
+   const y = Math.floor(posY * this.gridSize);
+   this.ws.send(JSON.stringify({ x, y }));
+   this.grid[x][y]++;
    this.populateGrid();
   },
   initializeGrid(){
@@ -54,8 +55,14 @@ export default {
     return `#0000${result}${result}`;
   },
   mounted() {
+    this.ws = new WebSocket("ws://ec2-54-194-151-237.eu-west-1.compute.amazonaws.com:8080");
+    this.ws.onmessage = (conn)=>{
+      console.log(JSON.parse(conn.data))
+
+      this.grid = JSON.parse(conn.data)
+    };
     this.initializeGrid();
-   window.addEventListener("mousemove", (pos)=>(this.setMousePosition(pos)), false);
+    window.addEventListener("mousemove", (pos)=>(this.setMousePosition(pos)), false);
     //this.setMousePosition(0,0)
   }
 };
