@@ -1,7 +1,7 @@
 import Engine from './engine.js';
-import Home from '../src/Home.js';
+import App from '../src/App.js';
 
-const root = document.getElementById('App');
-const App = new Engine(Home, root);
-App.mount();
+const rootElement = document.getElementById('App');
+const Root = new Engine(App, rootElement  );
+Root.mount();
 

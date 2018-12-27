@@ -6,11 +6,13 @@ export default {
   data: {
     gridSize: 100,
     maximumIntensity: 1,
-    grid: []
+    grid: [],
   },
   setMousePosition(pos) {
+    const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;;
+   if (pos.clientY + scrollPos > window.innerHeight) return;
    const posX = pos.clientX / window.innerWidth;
-   const posY = pos.clientY / window.innerWidth;
+   const posY = (pos.clientY + scrollPos) / window.innerWidth;
    const x = Math.floor(posX * this.gridSize);
    const y = Math.floor(posY * this.gridSize);
    this.ws.send(JSON.stringify({ x, y }));
@@ -50,14 +52,14 @@ export default {
   },
   getColor(intensity, maximum = 100){
     const scale = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
-    const index = Math.round(intensity/maximum * scale.length);
-    const result = scale[index];
-    return `#0000${result}${result}`;
+    const blue = Math.round(intensity/maximum * scale.length);
+    const b = scale[blue];
+    return `#0000${b}${b}`;
   },
   mounted() {
     this.ws = new WebSocket("ws://ec2-54-194-151-237.eu-west-1.compute.amazonaws.com:8080");
     this.ws.onmessage = (conn)=>{
-      console.log(JSON.parse(conn.data))
+      console.log(JSON.parse(conn.data));
 
       this.grid = JSON.parse(conn.data)
     };
