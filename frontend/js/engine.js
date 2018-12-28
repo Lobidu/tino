@@ -3,21 +3,28 @@ class Engine {
   // true reactivity. It could be factored into a reactive framework
   // but really? Vue does a better job at that.
 
-  constructor (component, dom) {
-    this.component = component;
+  constructor(component, node) {
+    this.component = Object.create(component);
     this.dataStore = {};
-    this.children = [];
-    this.dom = dom;
+    this.node = node;
   }
 
-  _initChildInstance(component, dom){
-    const child = new Engine(component, dom);
+  _loadProps() {
+    if (!this.component.props) return;
+    this.component.props.forEach(
+      (prop) => {
+        this.component[prop] = this.node.getAttribute(prop)
+      }
+    )
+  }
+
+  _initChildInstance(component, node){
+    const child = new Engine(component, node);
     child.mount();
-    this.children.push(child)
   }
 
   _injectComponent(component) {
-    const childComponents = this.dom.getElementsByTagName(component.name);
+    const childComponents = this.node.getElementsByTagName(component.name);
     // childComponents is only Array-like, not an actual array,
     // so we mimic the childComponents.forEach function with
     // the following
@@ -35,7 +42,7 @@ class Engine {
   _render() {
     // call the render() function of the component which returns HTML to
     // be injected.
-    this.dom.innerHTML = this.component.render();
+    this.node.innerHTML = this.component.render();
 
     // At this stage, all child components are just empty tags, so here
     // we populate them.
@@ -64,8 +71,11 @@ class Engine {
   }
 
   mount() {
+    this._loadProps();
     this._render();
     this._registerData();
+    // let the component access its own node
+    this.component.node = this.node;
     if (this.component.mounted) this.component.mounted();
   }
 

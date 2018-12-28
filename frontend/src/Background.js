@@ -9,7 +9,7 @@ export default {
     grid: [],
   },
   setMousePosition(pos) {
-    const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;;
+   const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
    if (pos.clientY + scrollPos > window.innerHeight) return;
    const posX = pos.clientX / window.innerWidth;
    const posY = (pos.clientY + scrollPos) / window.innerWidth;
@@ -65,6 +65,5 @@ export default {
     };
     this.initializeGrid();
     window.addEventListener("mousemove", (pos)=>(this.setMousePosition(pos)), false);
-    //this.setMousePosition(0,0)
   }
 };
