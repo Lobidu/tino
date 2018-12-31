@@ -1,11 +1,11 @@
-import Background from './Background.js';
+import MagicCanvas from './MagicCanvas.js';
 
 export default {
   name: 'Home',
-  components: [Background],
+  components: [MagicCanvas],
   render() {
     return `<div id="home" class="page center-elements">
-     <background></background>
+     <magiccanvas></magiccanvas>
      <h1>Great <span class="text-primary">code</span><br/>leaves an impression.</h1>
     </div>`
   }

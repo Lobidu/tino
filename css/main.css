@@ -72,8 +72,12 @@ h1:before, h2:before {
     width: 100vw;
 }
 
-.gradient {
+.gradient-dark {
     background: linear-gradient(180deg, #000000, #0b1523, #1f2833);
+}
+
+.gradient-light {
+    background: linear-gradient(180deg, #88a4bc, #c3cfda, #edeeef);
 }
 
 .fade {
@@ -84,7 +88,7 @@ h1:before, h2:before {
     opacity: 1;
 }
 
-background {
+canvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -116,20 +120,24 @@ background {
 
 #info {
     position: relative;
-    margin-top: -12vh
 }
 
-#info .blur {
+.earth {
+    position: relative;
+    top: -12vh;
+}
+
+.atmosphere {
     filter: blur(50px);
     -webkit-filter: blur(50px);
     opacity: 0.8;
     width: 100vw;
-    height: 12vw;
+    height: 12vh;
     left: 0;
     position: absolute;
 }
 
-#info .blur::after {
+.atmosphere::before {
     clip-path: ellipse(70% 100% at 50% 100%);
     -webkit-clip-path: ellipse(70% 100% at 50% 100%);
     content: "";
@@ -139,34 +147,33 @@ background {
     display: block;
 }
 
-#info .content::before {
+.atmosphere + div {
+    top: 12vh;
+    position: relative;
+}
+
+.atmosphere + div::before {
     clip-path: ellipse(70% 100% at 50% 100%);
     -webkit-clip-path: ellipse(70% 100% at 50% 100%);
     content: "";
     width: 100vw;
-    height: 12vw;
+    height: 12vh;
+    top: -12vh;
     left: 0;
     background: #88a4bc;
     display: block;
     position: absolute;
 }
 
-#info .content {
-    height: 88vh;
+#info {
+    height: 100vh;
 }
 
-#info .content>div  {
-    background: linear-gradient(180deg, #88a4bc, #c3cfda, #edeeef);
-    height: 100%;
-    position: relative;
-    top: 12vh;
-}
-
-#info, #info h2, #skills, #skills h2 {
+#info, #info h2, #skills, #skills h2, #next, #next h2 {
     color: #000000;
 }
 
-#skills {
+#next {
     background: #edeeef;
 }
 

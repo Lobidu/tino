@@ -76,6 +76,8 @@ class Engine {
     this._registerData();
     // let the component access its own node
     this.component.node = this.node;
+    // let the component trigger a new render
+    this.component.remount = ()=>{ this.mount() };
     if (this.component.mounted) this.component.mounted();
   }
 

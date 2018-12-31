@@ -3,20 +3,27 @@ import Transition from './Transition.js';
 import About from './About.js';
 import Info from './Info.js';
 import Skills from './Skills.js';
+import Next from './Next.js';
 import Footer from './Footer.js';
 
 export default {
   name: 'App',
-  components: [Home, Transition, About, Info, Skills, Footer],
+  components: [Home, Transition, About, Info, Skills, Next, Footer],
   render() {
     return `
       <home></home>
-      <div class="gradient">
+      <div class="gradient-dark">
        <transition></transition>
        <about></about>
       </div>
-      <info></info>
-      <skills></skills>
+      <div class="earth">
+      <div class="atmosphere"></div>
+      <div class="gradient-light">
+        <info></info>
+        <skills></skills>
+      </div>
+      </div>
+      <next></next>
       <footer></footer>
     `}
 };

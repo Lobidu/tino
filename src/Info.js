@@ -2,8 +2,6 @@ export default {
   name: 'Info',
   render() {
     return `<div id="info" class="page">
-    <div class="blur"></div>
-    <div class="content">
     <div class="center-elements column">
      <h2>In the past 12 Months...</h2>
      <div class="center-elements row text-center">
