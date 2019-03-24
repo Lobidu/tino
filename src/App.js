@@ -25,5 +25,8 @@ export default {
       </div>
       <next></next>
       <footer></footer>
-    `}
+    `},
+  mounted(){
+    window.addEventListener('touchstart', ()=>{ this.node.classList.add('touch') });
+  }
 };

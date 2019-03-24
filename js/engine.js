@@ -25,7 +25,7 @@ class Engine {
 
   _injectComponent(component) {
     const childComponents = this.node.getElementsByTagName(component.name);
-    // childComponents is only Array-like, not an actual array,
+    // childComponents is iterable, but not an actual array,
     // so we mimic the childComponents.forEach function with
     // the following
     Array.prototype.forEach.call(childComponents, el => {
