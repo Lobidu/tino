@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "aws-sdk": "^2.449.0",
     "dotenv": "^6.2.0",
     "ws": "^6.1.2"
   },
