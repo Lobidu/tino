@@ -72,8 +72,9 @@ class Engine {
 
   mount() {
     this._loadProps();
-    this._render();
     this._registerData();
+    if (this.component.beforeMount) this.component.beforeMount();
+    this._render();
     // let the component access its own node
     this.component.node = this.node;
     // let the component trigger a new render

@@ -1,3 +1,5 @@
+import canvasapi from '../canvasApi.js';
+
 export default {
   name: 'MagicCanvas',
   render () {
@@ -62,7 +64,7 @@ export default {
   },
   handleMouseMove(pos) {
     const [x,y] = this.getMousePositionOnGrid(pos);
-    this.ws.send(JSON.stringify([x,y]));
+    canvasapi.register([x,y]);
     this.grid[x][y]++;
     this.drawSquare(x, y, this.grid[x][y]);
   },
@@ -77,39 +79,20 @@ export default {
       100
     )
   },
-  establishSocket(){
-    return new Promise(resolve => {
-      // Establish a websocket connection
-      this.ws = new WebSocket("ws://janis.eu-west-1.elasticbeanstalk.com:8080");
-      this.ws.onclose = () => {
-        // try again
-        this.establishSocket();
-      };
-      this.ws.onopen = () => {
-        resolve();
-      }
-    })
-  },
-  async initializeRemote(){
-    this.establishSocket();
-    await this.establishSocket();
-    this.ws.onmessage = (response) => {
-      // When the connection is established, the server answers with the necessary information
-      const { grid, maxIntensity } = JSON.parse(response.data);
-      this.grid = grid;
-      this.maxIntensity = maxIntensity * 0.8;
-      this.paintCanvas();
-    };
+  async initializeRemoteData(){
+    this.grid = canvasapi.grid;
+    this.maxIntensity = canvasapi.maxIntensity;
+    this.paintCanvas();
   },
   initialize(){
     this.grid = this.getEmptyGrid();
     this.initializeCanvasMeasures();
-    this.initializeRemote();
+    canvasapi.onConnectionEstablished(() => this.initializeRemoteData());
   },
   mounted() {
     this.initialize();
-    window.addEventListener("mousemove", (pos)=>(this.handleMouseMove([pos.clientX,pos.clientY])), false);
-    window.addEventListener("touchmove", (pos)=>(this.handleMouseMove([pos.pageX,pos.pageY])), false);
+    this.node.addEventListener("mousemove", e => this.handleMouseMove([e.clientX,e.clientY]), false);
+    this.node.addEventListener("touchmove", e => this.handleMouseMove([e.pageX,e.pageY]), false);
     window.addEventListener("resize", ()=>(this.initialize()), false);
   },
 }
