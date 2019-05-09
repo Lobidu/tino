@@ -1,5 +1,7 @@
 const config = {
-  url: 'ws://janis.eu-west-1.elasticbeanstalk.com:8080'
+  // url: 'ws://janis.eu-west-1.elasticbeanstalk.com:8080'
+  url: 'wss://localhost:4622'
+  // url: 'wss://cup.janisaltherr.com'
 };
 
 class CanvasApi {
@@ -32,7 +34,7 @@ class CanvasApi {
       const { grid, visitors } = JSON.parse(response.data);
       this.grid = grid;
       this.visitors = visitors;
-      this.maxIntensity = this.getMaximumIntensity() * 0.8;
+      this.maxIntensity = 1 + this.getMaximumIntensity() * 0.8;
       this.connectionEstablishedFunctions.map(e => e())
     };
   }
