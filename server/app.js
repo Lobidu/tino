@@ -1,9 +1,6 @@
 const WebSocket = require('ws');
-const http = require('http');
 const AWS = require('aws-sdk');
 const crypto = require('crypto');
-const fs = require('fs');
-const path = require('path');
 
 const bucketName = 'cup.janis';
 const stateFileName = 'data.json';
@@ -94,9 +91,7 @@ async function main() {
     saveState();
   },100000);
 
-  const server = http.createServer();
-
-  const wss = new WebSocket.Server({ server });
+  const wss = new WebSocket.Server({ port: process.env.NODE_PORT });
 
   wss.on('headers', (headers, req) => {
     const existingVid = fetchVidFromCookies(req.headers.cookie);
@@ -128,8 +123,7 @@ async function main() {
     });
   });
 
-  server.listen(4622);
-  console.log('waiting');
+  console.log(new Date(), 'listening on', process.env.NODE_PORT);
 }
 
 main();
