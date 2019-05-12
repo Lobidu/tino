@@ -1,6 +1,4 @@
 const config = {
-  // url: 'ws://janis.eu-west-1.elasticbeanstalk.com:8080'
-  url: 'wss://localhost:4622'
   // url: 'wss://cup.janisaltherr.com'
 };
 

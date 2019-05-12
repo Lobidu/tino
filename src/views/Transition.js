@@ -10,11 +10,13 @@ export default {
    return `
     <div id="transition" class="fade center-elements">
       <div class="text-center width-50">
-        <p>
+        <p class="display">
            By
-           ${this.isTouchInteraction ? 'touching the screen' : 'moving your cursor'},
+            ${this.isTouchInteraction ? 'touching the screen' : 'moving your cursor'},
            you have left an impression on this website. 
-           To this day, ${this.visitors} visitors have left their individual mark.
+           To this day, 
+            ${this.visitors} visitor${(this.visitors > 1) ? 's have' : ' has' } 
+           left their individual mark.
         </p>
        </div>
     </div>`
