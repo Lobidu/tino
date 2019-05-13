@@ -164,12 +164,19 @@ p {
     margin-bottom: 50px;
 }
 
-.page {
-    position: relative;
-    min-height: 100vh;
+.screen, .page {
     width: 100vw;
-    padding: 0 50px;
+    position: relative;
     box-sizing: border-box;
+}
+
+.screen {
+    height: 100vh;
+    padding: 0 50px;
+}
+
+.page {
+    padding: 25vh 50px;
 }
 
 .container {
@@ -232,14 +239,21 @@ canvas {
 }
 
 .atmosphere {
-    width: 300vw;
-    height: 80vw;
     top: -15vw;
-    left: -100vw;
+    height: 80vw;
+    width: 100vw;
+    overflow: hidden;
     position: absolute;
-    background: radial-gradient(closest-side at center,  #92A9B1, #92A9B1 70%, transparent);
-    /*background: #000088;*/
+}
+
+.atmosphere::before {
+    height: 100%;
+    width: 300vw;
+    content: "";
+    left: -100vw;
+    background: radial-gradient(closest-side at center, var(--color-glow), var(--color-glow) 70%, transparent);
     display: block;
+    position: relative;
 }
 
 .atmosphere + div {
