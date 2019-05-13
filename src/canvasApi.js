@@ -1,5 +1,5 @@
 const config = {
-  // url: 'wss://cup.janisaltherr.com'
+  url: 'wss://cup.janisaltherr.com'
 };
 
 class CanvasApi {
