@@ -229,32 +229,20 @@ canvas {
 
 .earth {
     position: relative;
-    top: -5vw;
 }
 
 .atmosphere {
-    /*filter: blur(50px);*/
-    /*-webkit-filter: blur(50px);*/
-    opacity: 0.8;
-    width: 100vw;
-    height: 12vw;
-    left: 0;
+    width: 300vw;
+    height: 80vw;
+    top: -15vw;
+    left: -100vw;
     position: absolute;
-}
-
-.atmosphere::before {
-    /*clip-path: ellipse(70% 100% at 50% 100%);*/
-    /*-webkit-clip-path: ellipse(70% 100% at 50% 100%);*/
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at bottom, #92A9B1, transparent);
+    background: radial-gradient(closest-side at center,  #92A9B1, #92A9B1 70%, transparent);
     /*background: #000088;*/
     display: block;
 }
 
 .atmosphere + div {
-    top: 5vw;
     position: relative;
 }
 
@@ -266,7 +254,7 @@ canvas {
     height: 12vw;
     top: -5vw;
     left: 0;
-    /*background: var(--bg-lighter);*/
+    background: var(--bg-lighter);
     display: block;
     position: absolute;
 }
