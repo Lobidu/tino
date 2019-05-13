@@ -6,7 +6,7 @@ export default {
         <div class="container">
          <p>
            <span class="lead">
-            The fear of the unknown is gone.
+            
            </span> 
             
          </p>

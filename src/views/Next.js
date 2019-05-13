@@ -1,7 +1,7 @@
 export default {
   name: 'Next',
   render() {
-    return `<div id="next" class="page center-elements">
+    return `<div id="next" class="page last-page center-elements">
     <div class="container">
       <h2>What impresses me.</h2>
       <p>

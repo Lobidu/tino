@@ -92,7 +92,11 @@ export default {
   mounted() {
     this.initialize();
     this.node.addEventListener("mousemove", e => this.handleMouseMove([e.clientX,e.clientY]), false);
-    this.node.addEventListener("touchmove", e => this.handleMouseMove([e.pageX,e.pageY]), false);
+    this.node.addEventListener("touchmove", e => {
+      e.preventDefault(); // Chrome/Android fix
+      this.handleMouseMove([e.pageX,e.pageY])
+    }, false
+    );
     window.addEventListener("resize", ()=>(this.initialize()), false);
   },
 }

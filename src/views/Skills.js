@@ -15,9 +15,9 @@ export default {
           <skill title="Node.js" value="85"></skill>
           <skill title="Vue.js" value="90"></skill>
           <skill title="UX" value="85"></skill>
-          <skill title="Docker" value="80"></skill>
-          <skill title="MongoDB" value="60"></skill>
-          <skill title="PHP" value="70"></skill>
+          <skill title="Docker" value="60"></skill>
+          <skill title="MongoDB" value="65"></skill>
+          <skill title="Python" value="68"></skill>
          </div>
       </div>
     </div>

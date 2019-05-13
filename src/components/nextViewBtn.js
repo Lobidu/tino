@@ -23,11 +23,13 @@ export default {
     )
   },
   detectTouch(){
-    window.ontouchstart = () => {
+    window.addEventListener('touchstart', () => {
       this.isTouchInteraction = true;
-      this.node.classList.remove('opacity-0');
-      this.wiggle();
-   };
+      if (this.isInPosition()) {
+        this.node.classList.remove('opacity-0');
+        this.wiggle();
+      }
+   });
   },
   scrollTo(target, pos=1, iteration=1, maxIterations=50){
     // In a perfect world, we could just use the 'behavior: smooth' property of the
@@ -60,8 +62,11 @@ export default {
     const target = window.innerHeight * ( (this.scroll || 100) / 100);
     this.scrollTo(target);
   },
+  isInPosition(){
+    return this.node.getBoundingClientRect().top >= (0.8 * window.innerHeight)
+  },
   handleScroll(){
-    if(this.node.getBoundingClientRect().top >= (0.8 * window.innerHeight)){
+    if(this.isInPosition()){
       // scrolled back into view, reset.
       if (this.isTouchInteraction){
         this.node.classList.remove('opacity-0')
