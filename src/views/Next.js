@@ -3,7 +3,7 @@ export default {
   render() {
     return `<div id="next" class="page last-page center-elements">
     <div class="container">
-      <h2>What impresses me.</h2>
+      <h2>Imagine. Then do.</h2>
       <p>
         <span class="lead">I love to innovate. I love to discover how to do things better.</span>
         I like to inspire people. I want to create a vision and execute it.

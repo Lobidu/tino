@@ -8,9 +8,10 @@ export default {
        <div class="width-75 container">
          <h2>This is where I leave impressions.</h2>
          <p class="mb-50">
-         I am not the type who specialises in one particular language or tech, though I have 
-         a pretty good grasp on JS. My skill set ranges from UX to SQL all the way to Docker.
-         In short, these are the skills I believe I'm really good at:</p>
+            <span class="lead"> I try, I fail, I try again.</span>
+            I love experimenting with tech. I try something, sometimes it sticks, sometimes it doesn't.
+            Here is what stuck so far:
+         </p>
          <div class="width-width-100">
           <skill title="Node.js" value="85"></skill>
           <skill title="Vue.js" value="90"></skill>

@@ -21,7 +21,7 @@ export default {
         <div class="atmosphere"></div>
         <div class="gradient-light">
           <info></info>
-          <!--<info2></info2>-->
+          <info2></info2>
           <skills></skills>
         </div>
         <next></next>
