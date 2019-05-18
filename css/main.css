@@ -330,7 +330,13 @@ canvas {
     justify-content: left;
     color: var(--white);
     padding: 10px;
-    font-size: 0.9em;
+    font-size: 0.8em;
+}
+
+@media screen and (min-width: 620px) {
+    .skill .title {
+        font-size: 0.9em;
+    }
 }
 
 @media screen and (min-width: 1200px) {

@@ -6,13 +6,14 @@ export default {
   render: () => (
     `<div id="skills" class="page center-elements">
        <div class="width-75 container">
-         <h2>This is where I leave impressions.</h2>
+         <h2>Tech inspires.</h2>
          <p class="mb-50">
-            <span class="lead"> I try, I fail, I try again.</span>
-            I love experimenting with tech. I try something, sometimes it sticks, sometimes it doesn't.
-            Here is what stuck so far:
+            <span class="lead">User experience is not limited to the realm of front-end.</span>
+             For it to become a piece of art, all parts have to play together like a symphony.
+             I love finding inspiration in every element of the stack. These are the skills and
+             languages that I currently master best.
          </p>
-         <div class="width-width-100">
+         <div class="width-100">
           <skill title="Node.js" value="85"></skill>
           <skill title="Vue.js" value="90"></skill>
           <skill title="UX" value="85"></skill>

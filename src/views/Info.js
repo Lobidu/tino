@@ -12,7 +12,7 @@ export default {
            </span> 
            There isn't much that I haven't tried. Or still want to try.
            In the past two years alone, I've spent 6 months travelling Europe with a campervan. 
-           I've worked with amazing people at Apple. And I co-founded Campcrater Ltd.
+           I've worked with amazing people at Apple. And I co-founded Campcrater LTD.
          </p>
         </div>
       </div>`;
