@@ -68,17 +68,6 @@ export default {
     this.grid[x][y]++;
     this.drawSquare(x, y, this.grid[x][y]);
   },
-  drawDiminishingSquare(x, y, intensity){
-    if (intensity < this.grid[x][y]) return;
-    const steps = Math.round(this.maxIntensity / 100);
-    const ctx = this.drawSquare(x, y, intensity);
-    setTimeout(
-      ()=>{
-        this.drawDiminishingSquare(x, y, intensity-steps);
-      },
-      100
-    )
-  },
   async initializeRemoteData(){
     this.grid = canvasapi.grid;
     this.maxIntensity = canvasapi.maxIntensity;
