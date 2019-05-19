@@ -8,7 +8,6 @@ export default {
   data: {
     gridSize: 100,
     maxIntensity: 1,
-    mousetrace: [],
   },
   initializeCanvasMeasures(){
     this.canvas = this.node.getElementsByTagName('canvas')[0];
