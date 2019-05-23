@@ -10,7 +10,7 @@ export default {
         And I want to leave the world a bit better than I found it.
       </p>
       <p class="text-primary">
-        If you're interested, let me leave an impression.
+        I will leave an impression.
       </p>
     </div>`
   },
