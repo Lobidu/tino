@@ -1,0 +1,25 @@
+{
+  "name": "tino",
+  "version": "1.0.0",
+  "description": "The personal Website of Janis Altherr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lobidu/tino.git"
+  },
+  "author": "Janis Altherr <janisaltherr@gmail.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Lobidu/tino/issues"
+  },
+  "homepage": "https://github.com/Lobidu/tino#readme",
+  "devDependencies": {
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
