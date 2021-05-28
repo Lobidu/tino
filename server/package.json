@@ -7,7 +7,7 @@
     "aws-sdk": "^2.449.0",
     "dotenv": "^6.2.0",
     "https-proxy-agent": "^2.2.1",
-    "ws": "^6.1.2"
+    "ws": "^7.4.5"
   },
   "devDependencies": {},
   "scripts": {
